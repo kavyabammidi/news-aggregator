@@ -28,8 +28,8 @@ const App = () => {
   setLoading(true);
   setError(null);
   try {
-    const baseUrl = `https://newsapi.org/v2/top-headlines?country=us&pageSize=50&apiKey=${process.env.REACT_APP_NEWS_API_KEY}`;
-    
+   const baseUrl = `https://gnews.io/api/v4/top-headlines?lang=en&country=us&max=50&apikey=${process.env.REACT_APP_GNEWS_API_KEY}`;
+
     // Only include category if it's not All or empty
     const finalUrl = category && category !== 'All'
       ? `${baseUrl}&category=${category.toLowerCase()}`
