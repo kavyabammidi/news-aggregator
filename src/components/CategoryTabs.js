@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-const categories = ['All', 'Business', 'Entertainment', 'General', 'Health', 'Science', 'Sports', 'Technology'];
+const categories = ['Breaking-News', 'Business', 'Entertainment', 'Health', 'Science', 'Sports', 'Technology', 'World', 'Nation'];
 
 const CategoryTabs = ({ category, setCategory }) => {
   const tabRefs = useRef([]);

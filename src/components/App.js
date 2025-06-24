@@ -10,6 +10,19 @@ import Footer from './Footer';
 import About from './About';
 import Loader from './Loader';
 import '../data/App.css';
+const categoryToTopic = {
+  'Breaking-News': 'breakingnews',
+  'Business': 'business',
+  'Entertainment': 'entertainment',
+  'General': 'general',  // fallback
+  'Health': 'health',
+  'Science': 'science',
+  'Sports': 'sports',
+  'Technology': 'technology',
+  'World': 'world',
+  'Nation': 'nation'
+};
+
 
 const App = () => {
   const [articles, setArticles] = useState([]);
@@ -27,33 +40,35 @@ const App = () => {
     const fetchArticles = async () => {
   setLoading(true);
   setError(null);
+
   try {
-   const baseUrl = `https://gnews.io/api/v4/top-headlines?lang=en&country=us&max=50&apikey=${process.env.REACT_APP_GNEWS_API_KEY}`;
+  const topicParam = categoryToTopic[category] || 'breakingnews';
 
-    // Only include category if it's not All or empty
-    const finalUrl = category && category !== 'All'
-      ? `${baseUrl}&category=${category.toLowerCase()}`
-      : baseUrl;
+  const response = await fetch(`/.netlify/functions/getNews?category=${topicParam}`);
+  const data = await response.json();
 
-    const res = await fetch(finalUrl);
-    const data = await res.json();
+
+
 
     if (data.articles) {
-      setArticles(data.articles.map((a, idx) => ({
-        id: idx + '-' + (a.title || ''),
-        title: a.title,
-        snippet: a.description,
-        content: a.content,
-        image: a.urlToImage,
-        url: a.url,
-        category: a.source?.name || 'General',
-      })));
+      setArticles(
+        data.articles.map((a, idx) => ({
+          id: idx + '-' + (a.title || ''),
+          title: a.title,
+          snippet: a.description,
+          content: a.content,
+          image: a.image,
+          url: a.url,
+          category: a.source?.name || category,
+        }))
+      );
     } else {
       setArticles([]);
     }
   } catch (err) {
     setError('Failed to fetch articles.');
   }
+
   setLoading(false);
 };
 

@@ -1,0 +1,5 @@
+[dev]
+command = "npm run start"
+functions = "netlify/functions"
+port = 8888
+envFiles = [".env"]
