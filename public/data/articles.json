@@ -1,0 +1,29 @@
+[
+    {
+      "id": 1,
+      "title": "AI Revolutionizes News Industry",
+      "category": "Technology",
+      "snippet": "Artificial Intelligence is transforming how news is gathered and delivered.",
+      "image": "https://via.placeholder.com/300x180?text=AI+News",
+      "content": "Full article content about AI in news industry...",
+      "url": "https://example.com/ai-news"
+    },
+    {
+      "id": 2,
+      "title": "Global Markets Rally",
+      "category": "Business",
+      "snippet": "Stock markets around the world see significant gains.",
+      "image": "https://via.placeholder.com/300x180?text=Markets",
+      "content": "Full article content about global markets...",
+      "url": "https://example.com/markets"
+    },
+    {
+      "id": 3,
+      "title": "Health Benefits of Morning Walks",
+      "category": "Health",
+      "snippet": "Doctors recommend morning walks for a healthier lifestyle.",
+      "image": "https://via.placeholder.com/300x180?text=Health",
+      "content": "Full article content about morning walks...",
+      "url": "https://example.com/health"
+    }
+  ] 
